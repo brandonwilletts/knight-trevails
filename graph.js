@@ -45,33 +45,8 @@ class Graph {
     }
     return graph;
   }
-
-  knightMoves(startCoordinates, endCoordinates) {
-    const startNode = this.nodes[startCoordinates[0]][startCoordinates[1]];
-    const endNode = this.nodes[endCoordinates[0]][endCoordinates[1]];
-
-    let queue = [startNode];
-    let checked = [];
-
-    if (startNode === endNode) {
-      return console.log("We found it right away!");
-    } else {
-      while (queue.length > 0) {
-        const currentNode = queue[0];
-
-        if (!checked.some((item) => item === currentNode)) {
-          if (currentNode.connections.some((item) => item === endNode)) {
-            return console.log(`We found it in ${currentNode.coordinates}`);
-          } else {
-            checked.push(currentNode);
-            queue = queue.concat(currentNode.connections);
-          }
-        }
-        queue.shift();
-      }
-    }
-  }
 }
 
-const newGraph = new Graph();
-newGraph.knightMoves([0, 0], [1, 7]);
+const chessboard = new Graph();
+
+module.exports = { chessboard };
